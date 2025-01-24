@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'gamescreen.dart'; // Import the GameScreen file
+
 
 void main() {
   runApp(const SOSGame());
@@ -104,25 +106,6 @@ class WelcomeScreen extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class GameScreen extends StatelessWidget {
-  const GameScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('SOS Game'),
-      ),
-      body: const Center(
-        child: Text(
-          'Game Screen Placeholder',
-          style: TextStyle(fontSize: 24),
-        ),
       ),
     );
   }
