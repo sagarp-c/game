@@ -45,7 +45,6 @@ class HostJoinScreen extends StatelessWidget {
               // Host button
               ElevatedButton(
                 onPressed: () {
-                  // Navigate to the Host screen (to be implemented later)
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Host feature coming soon!')),
                   );
@@ -75,7 +74,6 @@ class HostJoinScreen extends StatelessWidget {
               // Join button
               ElevatedButton(
                 onPressed: () {
-                  // Navigate to the Join screen (to be implemented later)
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Join feature coming soon!')),
                   );
@@ -95,6 +93,35 @@ class HostJoinScreen extends StatelessWidget {
                     SizedBox(width: 10),
                     Text(
                       'Join a Game',
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              // Quick Start button
+              ElevatedButton(
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Quick Start coming soon!')),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 50, vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  backgroundColor: Colors.purpleAccent,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    Icon(Icons.flash_on),
+                    SizedBox(width: 10),
+                    Text(
+                      'Quick Start',
                       style: TextStyle(fontSize: 20, color: Colors.black),
                     ),
                   ],
@@ -129,7 +156,7 @@ class HostJoinScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      'Host a game to create a new session or join an existing session hosted by your friends.',
+                      'Host a game to create a new session, join an existing session hosted by your friends, or try Quick Start to play instantly.',
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.black54,
