@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(SOSGame());
+  runApp(const SOSGame());
 }
 
 class SOSGame extends StatelessWidget {
@@ -12,22 +12,105 @@ class SOSGame extends StatelessWidget {
     return MaterialApp(
       title: 'SOS Game',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const GameScreen(),
       debugShowCheckedModeBanner: false,
+      home: const WelcomeScreen(),
     );
   }
 }
 
-class GameScreen extends StatefulWidget {
-  const GameScreen({Key? key}) : super(key: key);
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({Key? key}) : super(key: key);
 
   @override
-  _GameScreenState createState() => _GameScreenState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          // Background color or image
+          Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.blue, Colors.lightBlueAccent],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+          ),
+          // Content of the Welcome Screen
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Game Title or Logo
+                Text(
+                  'SOS Game',
+                  style: TextStyle(
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    shadows: [
+                      Shadow(
+                        blurRadius: 10.0,
+                        color: Colors.black45,
+                        offset: Offset(2, 2),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                // Subtitle or tagline
+                Text(
+                  'A Fun Multiplayer Experience',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white70,
+                  ),
+                ),
+                const SizedBox(height: 50),
+                // "Tap to Start" Button
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 40, vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const GameScreen(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'Tap to Start',
+                    style: TextStyle(fontSize: 24),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // Footer (optional)
+          Positioned(
+            bottom: 20,
+            left: 0,
+            right: 0,
+            child: Text(
+              '© 2025 Your Game Studio',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white70, fontSize: 14),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
-class _GameScreenState extends State<GameScreen> {
-  // 3x3 grid placeholder
-  List<List<String>> grid = List.generate(3, (_) => List.generate(3, (_) => ''));
+class GameScreen extends StatelessWidget {
+  const GameScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,58 +118,11 @@ class _GameScreenState extends State<GameScreen> {
       appBar: AppBar(
         title: const Text('SOS Game'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // Game Grid
-          Container(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(3, (row) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(3, (col) {
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          // Toggle between "S" and "O" for now
-                          grid[row][col] = grid[row][col] == 'S' ? 'O' : 'S';
-                        });
-                      },
-                      child: Container(
-                        margin: const EdgeInsets.all(4),
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          border: Border.all(color: Colors.black, width: 2),
-                        ),
-                        alignment: Alignment.center,
-                        child: Text(
-                          grid[row][col], // Display S or O
-                          style: const TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    );
-                  }),
-                );
-              }),
-            ),
-          ),
-          // Reset Button
-          ElevatedButton(
-            onPressed: () {
-              setState(() {
-                grid = List.generate(3, (_) => List.generate(3, (_) => ''));
-              });
-            },
-            child: const Text('Reset Game'),
-          ),
-        ],
+      body: const Center(
+        child: Text(
+          'Game Screen Placeholder',
+          style: TextStyle(fontSize: 24),
+        ),
       ),
     );
   }
