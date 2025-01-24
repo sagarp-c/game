@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'sos.dart';
+
 
 class HostJoinScreen extends StatelessWidget {
   const HostJoinScreen({Key? key}) : super(key: key);
@@ -101,12 +103,17 @@ class HostJoinScreen extends StatelessWidget {
               const SizedBox(height: 20),
 
               // Quick Start button
-              ElevatedButton(
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Quick Start coming soon!')),
-                  );
-                },
+            // Game Selection Button
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to HostJoinScreen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SOSGameScreen(),
+                  ),
+                );
+              },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 50, vertical: 15),
